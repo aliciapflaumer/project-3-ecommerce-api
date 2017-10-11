@@ -10,7 +10,12 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
     "order": {
-      "products": "'"${PRODUCTS}"'",
+      "products": {
+        "name": "'"${NAME}"'",
+        "price": "'"${PRICE}"'",
+        "category": "'"${CATEGORY}"'",
+        "description": "'"${DESCRIPTION}"'"
+      },
       "purchaseStatus": "'"${PURCHASED}"'",
       "stripeToken": "'"${STRIPE}"'"
     }
