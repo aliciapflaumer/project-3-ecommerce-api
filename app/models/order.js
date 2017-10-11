@@ -1,12 +1,10 @@
 'use strict'
 
 const mongoose = require('mongoose')
+const product = require('./product')
 
 const orderSchema = new mongoose.Schema({
-  products: {
-    type: [],
-    required: true
-  },
+  products: [product.productSchema],
   purchaseStatus: {
     type: Boolean,
     required: true
