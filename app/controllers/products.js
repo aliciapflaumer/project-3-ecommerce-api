@@ -2,7 +2,7 @@
 
 const controller = require('lib/wiring/controller')
 const models = require('app/models')
-const Product = models.product
+const Product = models.product.Product
 
 const authenticate = require('./concerns/authenticate')
 const setUser = require('./concerns/set-current-user')
