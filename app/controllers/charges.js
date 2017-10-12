@@ -8,6 +8,10 @@ const authenticate = require('./concerns/authenticate')
 const setUser = require('./concerns/set-current-user')
 const setModel = require('./concerns/set-mongoose-model')
 
+// const keyPublishable = pk_test_IWtf8h0ew1zAXAmlNvnTtXKo
+// const keySecret = process.env.SECRET_KEY
+const stripe = require('stripe')('sk_test_vl80VL6bvo2yITX7PNMzVUZp')
+
 const index = (req, res, next) => {
   Charge.find()
     .then(charges => res.json({
@@ -26,11 +30,24 @@ const show = (req, res) => {
 const create = (req, res, next) => {
   console.log('req.body is ', req.body)
   const charge = Object.assign(req.body)
-  Charge.create(charge)
+  const token = req.body.stripeToken
+
+  stripe.charges.create({
+    amount: 90000000,
+    currency: 'usd',
+    description: 'Expensive Cheese',
+    source: token
+  })
+    // .then((data) => console.log('stripe response is: ', data))
+    .then(function (data) {
+      charge.amount = data.amount
+      charge.description = data.description
+    })
+    .then(() => Charge.create(charge))
     .then(charge =>
       res.status(201)
         .json({
-          charge: charge.toJSON({ virtuals: true, user: req.user })
+          charge: charge.toJSON({ virtuals: true })
         }))
     .catch(next)
 }
