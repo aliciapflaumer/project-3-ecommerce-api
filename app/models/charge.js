@@ -7,14 +7,6 @@ const chargeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  stripeTokenType: {
-    type: String,
-    required: true
-  },
-  stripeEmail: {
-    type: String,
-    required: true
-  },
   amount: {
     type: Number
   },

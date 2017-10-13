@@ -29,9 +29,10 @@ const show = (req, res) => {
 
 const create = (req, res, next) => {
   console.log('req.body is ', req.body)
-  const charge = Object.assign(req.body)
-  const token = req.body.stripeToken
-  const totalAmount = req.body.stripeAmount
+  const charge = {}
+  const token = req.body.token.id
+  console.log(token)
+  const totalAmount = req.body.amount
 
   stripe.charges.create({
     amount: totalAmount,
@@ -41,9 +42,12 @@ const create = (req, res, next) => {
     // .then((data) => console.log('stripe response is: ', data))
     .then(function (data) {
       charge.amount = data.amount
+      charge.stripeToken = data.id
       charge.description = data.description
+      return charge
     })
-    .then(() => Charge.create(charge))
+    // .then(data => console.log('charge is ', data))
+    .then(data => Charge.create(data))
     // .then((data) => console.log('data after charge created: ', data))
     .then(data =>
       res.status(201)
