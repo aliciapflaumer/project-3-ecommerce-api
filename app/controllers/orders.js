@@ -38,17 +38,20 @@ const create = (req, res, next) => {
 
 const update = (req, res, next) => {
   delete req.body.order._owner  // disallow owner reassignment.
-  // console.log('req.order.products is ', req.order.products)
-  // console.log('req.body.order.products is ', req.body.order.products)
-  // console.log(typeof req.body.order)
-  const prodArray = req.order.products
-  prodArray.push(req.body.order.products)
-  // console.log(prodArray)
-  // console.log(req.body.order)
-  req.body.order.products = prodArray
-  req.order.update(req.body.order)
-    .then(() => res.sendStatus(204))
-    .catch(next)
+  console.log('req.order.products is ', req.order.products)
+  console.log('req.body.order is: ', req.body.order)
+  console.log('req.body.order.products is ', req.body.order.products)
+  console.log('req.body.order.products.id is: ', req.body.order.products.id)
+  if (req.body.order.products.id === undefined) {
+    const prodArray = req.order.products
+    prodArray.push(req.body.order.products)
+    // console.log(prodArray)
+    // console.log(req.body.order)
+    req.body.order.products = prodArray
+    req.order.update(req.body.order)
+      .then(() => res.sendStatus(204))
+      .catch(next)
+  } // else
 }
 
 const destroy = (req, res, next) => {
