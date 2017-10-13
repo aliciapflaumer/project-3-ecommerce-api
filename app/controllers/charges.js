@@ -31,11 +31,11 @@ const create = (req, res, next) => {
   console.log('req.body is ', req.body)
   const charge = Object.assign(req.body)
   const token = req.body.stripeToken
+  const totalAmount = req.body.stripeAmount
 
   stripe.charges.create({
-    amount: 90000000,
+    amount: totalAmount,
     currency: 'usd',
-    description: 'Expensive Cheese',
     source: token
   })
     // .then((data) => console.log('stripe response is: ', data))
@@ -44,11 +44,13 @@ const create = (req, res, next) => {
       charge.description = data.description
     })
     .then(() => Charge.create(charge))
-    .then(charge =>
+    // .then((data) => console.log('data after charge created: ', data))
+    .then(data =>
       res.status(201)
         .json({
-          charge: charge.toJSON({ virtuals: true })
-        }))
+          charge: data.toJSON()
+        })
+      )
     .catch(next)
 }
 
