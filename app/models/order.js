@@ -9,10 +9,6 @@ const orderSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
-  stripeToken: {
-    type: String,
-    required: true
-  },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
