@@ -13,7 +13,7 @@ const setModel = require('./concerns/set-mongoose-model')
 const stripe = require('stripe')('sk_test_vl80VL6bvo2yITX7PNMzVUZp')
 
 const index = (req, res, next) => {
-  Charge.find()
+  Charge.find({ _owner: req.user })
     .then(charges => res.json({
       charges: charges.map((e) =>
         e.toJSON({ virtuals: true, user: req.user }))
@@ -31,7 +31,7 @@ const create = (req, res, next) => {
   console.log('req.body is ', req.body)
   const charge = {}
   const token = req.body.token.id
-  console.log(token)
+  console.log(req.user)
   const totalAmount = req.body.amount
 
   stripe.charges.create({
@@ -44,6 +44,8 @@ const create = (req, res, next) => {
       charge.amount = data.amount
       charge.stripeToken = data.id
       charge.description = data.description
+      charge._owner = '59df8c888f6fc16ed71cb882'
+      // This sets the owner for all charges to be the admin account
       return charge
     })
     // .then(data => console.log('charge is ', data))
@@ -79,7 +81,7 @@ module.exports = controller({
   destroy
 }, { before: [
   { method: setUser, only: ['index', 'show'] },
-  { method: authenticate, except: ['index', 'show', 'create'] },
+  { method: authenticate },
   { method: setModel(Charge), only: ['show'] },
   { method: setModel(Charge, { forUser: true }), only: ['update', 'destroy'] }
 ] })
