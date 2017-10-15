@@ -28,10 +28,10 @@ const show = (req, res) => {
 }
 
 const create = (req, res, next) => {
-  console.log('req.body is ', req.body)
+  // console.log('req.body is ', req.body)
   const charge = {}
   const token = req.body.token.id
-  console.log(req.user)
+  // console.log(req.user)
   const totalAmount = req.body.amount
 
   stripe.charges.create({
