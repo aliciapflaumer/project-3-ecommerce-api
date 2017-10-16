@@ -37,7 +37,7 @@ const create = (req, res, next) => {
 }
 
 const update = (req, res, next) => {
-  console.log('req.body is ', req.body)
+  // console.log('req.body is ', req.body)
   delete req.body.order._owner  // disallow owner reassignment.
   // console.log('req.order.products is ', req.order.products)
   // console.log('req.body.order is: ', req.body.order)
