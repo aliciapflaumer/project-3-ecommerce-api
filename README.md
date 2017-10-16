@@ -27,7 +27,7 @@ We reached our planned goals for the API.
 
 
 ## Planning, process and problem-solving strategy
-We started with team meetings to plan our stategies. We then created wireframes, ERD, and user stories to guide our development process. We started pair programming to setup the initial file structures and features. Once we were based the initial stage, we broke off and worked both in pairs or individually on selected features. Our group routinely regrouped to discuss our progress or troubleshoot issues.
+We started with team meetings to plan our stategies. We then created wireframes, ERD, and user stories to guide our development process. We started pair programming to setup the initial file structures and features. Once we were past the initial stage, we broke off and worked both in pairs or individually on selected features. Our group routinely regrouped to discuss our progress or troubleshoot issues.
 
 
 
