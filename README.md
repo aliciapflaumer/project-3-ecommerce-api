@@ -10,6 +10,11 @@ Nozama.com is an e-commerce app that allows users to create an account and brows
 
 ## Link to both deployed sites
 
+Client: https://ga-brogrammers.github.io/project-3-ecommerce-client/
+
+API:
+https://whispering-tor-36273.herokuapp.com/
+
 
 
 ## List of technologies used
@@ -18,13 +23,16 @@ HTML, CSS, Bootstrap, Javascript, jQuery, handlebars, Stripe
 
 ## List unsolved problems which would be fixed in future iterations
 
+We reached our planned goals for the API.
 
 
 ## Planning, process and problem-solving strategy
+We started with team meetings to plan our stategies. We then created wireframes, ERD, and user stories to guide our development process. We started pair programming to setup the initial file structures and features. Once we were past the initial stage, we broke off and worked both in pairs or individually on selected features. Our group routinely regrouped to discuss our progress or troubleshoot issues.
 
-[Workflow checklist] (https://github.com/GA-Brogrammers/project-3-ecommerce-client/blob/master/checklist.md)
 
-## Enity Relationship Diagram (ERD)
+
+
+## Entity Relationship Diagram (ERD)
 
 Products -< Shopping list >- Users
 
