@@ -6,16 +6,14 @@ Nozama.com is an e-commerce app that allows users to create an account and brows
 
 ## Link to Front end repositories
 
-[Nozama.com front end](https://github.com/GA-Brogrammers/project-3-ecommerce-client)
+[Nozama.com front end](https://github.com/aliciapflaumer/project-3-ecommerce-client)
 
 ## Link to both deployed sites
 
-Client: https://ga-brogrammers.github.io/project-3-ecommerce-client/
+Client: https://aliciapflaumer.github.io/project-3-ecommerce-client/
 
 API:
-https://whispering-tor-36273.herokuapp.com/
-
-
+https://nozama-ecommerce.herokuapp.com/
 
 ## List of technologies used
 
